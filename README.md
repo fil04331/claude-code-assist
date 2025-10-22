@@ -1,1 +1,5 @@
 # claude-code-assist
+
+Ce dépôt sert à travailler en collaboration avec Claude Code. Et est nul autre qu'un environnement bidon pour faire du développement et créer parfois un seul ou deux documents de code, puis que j'aille à un endroit pour le uploader et pour lui transmettre. Autrement dit, c'est notre passerelle de fichiers car Claude est beaucoup plus performant en mode Claude Code que les capacités natives de la plateforme quand il est en mode chatbot.
+
+Alors, conserve ce dépôt propre. Tu peux te faire une note Claude.md en meilleure et unis forme que celle-ci, mais je veux que ce dépôt reste notre terrain de développement malléable pour générer rapidement certains contenus que j'ai besoin, mais de meilleure qualité dès le premier coup. Si tu as des questions, n'hésite jamais à me poser des questions directement dans la plateforme où nous codons, justement, et servons-nous de ceci comme passerelle de documentation et prototypage.
