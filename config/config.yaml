@@ -1,0 +1,78 @@
+# Configuration pour le MVP - Analyse de Tendances Marché Québécois
+# Secteur: Meubles, Électroménagers, Matelas, Couvre-planchers
+
+# Google Trends Settings
+google_trends:
+  geo: "CA-QC"  # Québec, Canada
+  timeframe: "today 12-m"  # Last 12 months
+  language: "fr"  # French
+
+# Keywords by Category
+keywords:
+  meubles:
+    - "meubles québec"
+    - "mobilier maison"
+    - "canapé"
+    - "table salon"
+    - "lit"
+    - "bureau maison"
+    - "rangement maison"
+
+  electromenagers:
+    - "électroménagers québec"
+    - "réfrigérateur"
+    - "laveuse sécheuse"
+    - "cuisinière"
+    - "lave-vaisselle"
+    - "four micro-ondes"
+    - "congélateur"
+
+  matelas:
+    - "matelas québec"
+    - "matelas mémoire forme"
+    - "sommier"
+    - "oreiller"
+    - "literie"
+
+  couvre_planchers:
+    - "plancher bois franc"
+    - "tapis"
+    - "vinyle plancher"
+    - "céramique"
+    - "tuiles"
+    - "prélart"
+
+# Database Settings
+database:
+  path: "data/trends.db"
+  backup_path: "data/backups/"
+
+# Collection Settings
+collection:
+  update_frequency_hours: 24  # How often to collect new data
+  batch_size: 5  # Number of keywords to process at once
+  delay_between_requests: 2  # Seconds between API calls
+
+# Dashboard Settings
+dashboard:
+  title: "Analyse de Tendances - Marché Québécois"
+  subtitle: "Meubles, Électroménagers, Matelas & Couvre-planchers"
+  port: 8501
+  theme: "light"
+
+# Visualization Settings
+visualization:
+  color_scheme:
+    meubles: "#1f77b4"
+    electromenagers: "#ff7f0e"
+    matelas: "#2ca02c"
+    couvre_planchers: "#d62728"
+  chart_height: 400
+  show_grid: true
+
+# Logging Settings
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  log_file: "logs/trends_collector.log"
+  max_file_size_mb: 10
+  backup_count: 5
