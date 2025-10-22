@@ -317,11 +317,27 @@ def main():
                 st.metric("Intérêt moyen", f"{avg_interest:.1f}")
 
                 # Calculate trend (last 30 days vs previous 30 days)
-                if len(cat_data) > 60:
-                    recent_avg = cat_data.nlargest(30, 'date')['interest'].mean()
-                    older_avg = cat_data.nlargest(60, 'date').nsmallest(30, 'date')['interest'].mean()
-                    trend = ((recent_avg - older_avg) / older_avg * 100) if older_avg > 0 else 0
-                    st.metric("Tendance 30j", f"{trend:+.1f}%")
+                # Use actual date-based filtering instead of data point count
+                # to handle weekly vs daily data properly
+                if not cat_data.empty:
+                    # Get the most recent date in the data
+                    max_date = cat_data['date'].max()
+                    
+                    # Define date ranges
+                    recent_start = max_date - pd.Timedelta(days=30)
+                    older_start = max_date - pd.Timedelta(days=60)
+                    older_end = recent_start
+                    
+                    # Filter data by date ranges
+                    recent_data = cat_data[cat_data['date'] > recent_start]
+                    older_data = cat_data[(cat_data['date'] > older_start) & (cat_data['date'] <= older_end)]
+                    
+                    # Calculate trend if we have data in both periods
+                    if len(recent_data) > 0 and len(older_data) > 0:
+                        recent_avg = recent_data['interest'].mean()
+                        older_avg = older_data['interest'].mean()
+                        trend = ((recent_avg - older_avg) / older_avg * 100) if older_avg > 0 else 0
+                        st.metric("Tendance 30j", f"{trend:+.1f}%")
 
     # Tab 4: Raw data
     with tab4:
